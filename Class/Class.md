@@ -17,37 +17,39 @@ fun main(){
 
 그러면 코틀린 클래스에서 private 프로퍼티를 선언하면 어떻게 될까?
 ```kotlin
+
 class Ex {
-    private var sample =0
+    private var sample=0
 
 }
 
-class Dasf{
-    var sample=0
+class Ex2 {
+    var sample = 0
 }
 fun main(){
 
-    val a= Ex()
-    val b = a.sample // 사용할 수 없음
-    a.sample=5 // 사용할 수 없음
+    val ex= Ex()
+    val b = ex.sample // 사용할 수 없음
+    ex.sample=5 // 사용할 수 없음
 
-    val dasf = Dasf()
-    val test = dasf.sample // 사용할 수 있음
-    dasf.sample=5 // 사용할 수 없음
+    val ex2 = Ex2()
+    val test = ex2.sample // 사용할 수 있음
+    ex2.sample=5 // 사용할 수 없음
 }
 
 ```
-위의 클래스 코드들을 코틀린 바이트 코드로 변환한 후 디컴파일을 하면 자바 코드로 변하는데 변한 코드는 이러하다.
+위의 클래스 코드들을 JVM 바이트 코드로 변환한 후 디컴파일을 하면 자바 코드로 변하는데 변한 코드는 이러하다.
 ```java
 public final class Ex {
    private int sample;
 }
 
-public final class dasf {
-   private int junsik;
+
+public final class Ex2 {
+   private int sample;
 
    public final int getSample() {
-      return sample.junsik;
+      return this.sample;
    }
 
    public final void setSample(int var1) {
